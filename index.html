@@ -2,12 +2,47 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Audio visualizer</title>
+		<title>Sonar visualizer</title>
 		
-		<script src="visualize.js"></script>
+		<script src="js/SonarViz.js"></script>
+		
+		<script>
+		
+			var sonar;
+			
+			window.addEventListener('load', function() {
+				
+				sonar = new SonarViz('audio/MyGirl.ogg', 'drawingBoard');
+				
+			});
+
+			window.addEventListener('keydown', function(e) {
+				switch(e.keyCode) {
+				case 80:
+					sonar.play();
+					break;
+				case 85:
+					sonar.stop();
+					break;
+				case 107:
+					sonar.volumeUp();
+					break;
+				case 109:
+					sonar.volumeDown();
+					break;
+				
+				default:
+					break;
+				}
+			});
+			
+		</script>
+		
 	</head>
 	
 	<body>
+		
+		<input type="hidden" value="audio/ovningskora.ogg" id="audioSrc" />
 	
 		<canvas id="drawingBoard" width="1024" height="512"></canvas>
 	
